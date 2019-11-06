@@ -4,6 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
+from flask_bootstrap import Bootstrap
+from flask_moment import Moment
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import logging
 import os
@@ -53,7 +55,10 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
 
-# generate log file
+# bootstrap
+bootstrap = Bootstrap(app)
 
+# handle time
+moment = Moment(app)
 
 from app import routes, models
